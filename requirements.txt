@@ -2,4 +2,5 @@ dplyr
 readr
 rtweet
 config
+purrr
 futile.logger
