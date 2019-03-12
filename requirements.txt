@@ -1,0 +1,5 @@
+dplyr
+readr
+rtweet
+config
+futile.logger

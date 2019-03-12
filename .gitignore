@@ -5,6 +5,16 @@
 # Session Data files
 .RData
 
+#Raw data and logfiles
+/logs/
+/data/
+
+#API key and configs
+*.yml
+
+#R project data
+*.Rproj
+
 # Example code in package build process
 *-Ex.R
 
@@ -34,3 +44,4 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
+.Rproj.user

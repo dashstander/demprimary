@@ -1,0 +1,5 @@
+default:
+  consumer_api_key: "gibberish"
+  consumer_api_secret: "longer gibberish"
+  access_token: "gibber-gibberish"
+  access_token_secret: "blahblahblah"
