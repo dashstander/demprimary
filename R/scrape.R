@@ -41,11 +41,11 @@ scrape_tweets <- function(candidate, n, step, output_csv, logger = "") {
     flog.info(sprintf("Candidate %s: %d tweets for a total of %d. Earliest status_id: %s for time %s",
                       candidate, num_tweets, tweets_returned, min_status_id, as.character(min(tweets$created_at))),
               name=logger)
-    all_tweets[i] = tweets
+    all_tweets[[i]] = tweets
     i = i + 1
   }
   
-  return(bind_rows(all_tweets))
+  #return(bind_rows(all_tweets))
 }
 
 PrimaryField = readr::read_csv("candidates2020.csv")
@@ -63,6 +63,17 @@ candidates = PrimaryField %>%
 #    )
 
 
+csv_output_fp = function(name) {
+  paste0("./data/raw/", name, "_", as.character(Sys.Date()), ".csv")
+}
 
+for (dem in candidates) {
+  if (dem %in% c("kamala harris", "cory booker",
+                 "julian castro", "pete buttigieg")) next
+  
+  scrape_tweets(dem, 100000, 5000,
+                csv_output_fp(dem),
+                "scraper")
+}
 
 

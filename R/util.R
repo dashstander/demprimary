@@ -32,5 +32,6 @@ paginate_tweets <- function(search_term, num_tweets, min_status_id = NULL) {
                 max_id = min_status_id,
                 includs_rts = FALSE,
                 retryonratelimit = TRUE) %>% 
-    mutate_if(is.list, geo_coords_to_string)
+    mutate_if(is.list, geo_coords_to_string) %>%
+    filter(status_id != min_status_id)
 }
