@@ -1,4 +1,5 @@
 default:
+  app_name: "your_apps_name"
   consumer_api_key: "gibberish"
   consumer_api_secret: "longer gibberish"
   access_token: "gibber-gibberish"
