@@ -33,6 +33,10 @@ scrape_tweets <- function(candidate, n, step, output_csv, logger = "") {
     tweets = paginate_tweets(candidate, step, min_status_id)
     num_tweets = nrow(tweets)
     
+    if (num_tweets > 0 && !is.null(min_status_id)) {
+      tweets = tweets %>% filter(status_id != min_status_id)
+      num_tweets = nrow(tweets)
+    }
     if (num_tweets == 0) break
     
     write_csv(tweets, output_csv, append = file.exists(output_csv))
@@ -41,8 +45,8 @@ scrape_tweets <- function(candidate, n, step, output_csv, logger = "") {
     flog.info(sprintf("Candidate %s: %d tweets for a total of %d. Earliest status_id: %s for time %s",
                       candidate, num_tweets, tweets_returned, min_status_id, as.character(min(tweets$created_at))),
               name=logger)
-    all_tweets[[i]] = tweets
-    i = i + 1
+    #all_tweets[[i]] = tweets
+    #i = i + 1
   }
   
   #return(bind_rows(all_tweets))
